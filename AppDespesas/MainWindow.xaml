@@ -1,0 +1,92 @@
+﻿<Window x:Class="AppDespesas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDespesas"
+        mc:Ignorable="d"
+        Title="Despesómetro" Height="450" Width="800">
+    <Grid>
+        <Grid>
+            <StackPanel>
+                <Grid Width="799">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="89*"/>
+                        <ColumnDefinition Width="71*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Fornecedor:" HorizontalAlignment="Left" Margin="39,15,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Valor:" HorizontalAlignment="Left" Margin="39,87,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Pago:" HorizontalAlignment="Left" Margin="40,48,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ComboBox x:Name="cmbFornecedor" HorizontalAlignment="Left" Margin="148,15,0,0" VerticalAlignment="Top" Width="269" IsReadOnly="True"/>
+                    <TextBox  x:Name="txtDescricao" HorizontalAlignment="Left" Height="24" Margin="148,51,0,0" Text="" VerticalAlignment="Top" Width="269"/>
+                    <TextBox x:Name="txtValor" HorizontalAlignment="Left" Height="23" Margin="148,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67"/>
+                    <DatePicker x:Name="dtpckDataPagamento" HorizontalAlignment="Left" Margin="146,15,0,0" VerticalAlignment="Top" Width="163" Grid.Column="1"/>
+                    <CheckBox x:Name="chkPago" Content="" HorizontalAlignment="Left" Margin="146,51,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="btnSair" Content="Sair" Click="btnSair_Click" HorizontalAlignment="Left" Margin="146,140,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+                    <Button x:Name="btnGravar" Click="btnGravar_Click" Content="#" HorizontalAlignment="Left" Margin="428,140,0,0" VerticalAlignment="Top" Width="109" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnCancelar" Click="btnCancelar_Click" IsEnabled="False" Content="Cancelar" HorizontalAlignment="Left" Margin="314,140,0,0" Width="90"/>
+                    <Button x:Name="btnApagar" Click="btnApagar_Click" Content="Apagar" Visibility="Hidden" HorizontalAlignment="Left" Margin="24,140,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Label Content="Data Pagamento:" HorizontalAlignment="Left" Margin="40,14,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Descrição:" HorizontalAlignment="Left" Margin="39,49,0,0" VerticalAlignment="Top"/>
+                    <Label Content="MetodoPagamento:" HorizontalAlignment="Left" Margin="37,92,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ComboBox x:Name="cmbmodopagamento" HorizontalAlignment="Left" Margin="157,91,0,0" VerticalAlignment="Top" Width="152" IsReadOnly="True" Height="22" Grid.Column="1"/>
+                </Grid>
+                <Separator Height="10"></Separator>
+                <ListView x:Name="lstDespesas" Height="200" SelectionChanged="lstDespesas_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn 
+                                Width="200" 
+                                Header="Fornecedor"
+                                DisplayMemberBinding="{Binding Fornecedor}"/>
+                            <GridViewColumn 
+                                Width="200" 
+                                Header="Descrição"
+                                DisplayMemberBinding="{Binding Descricao}"/>
+                            <GridViewColumn 
+                                Width="100" 
+                                Header="Valor"
+                                DisplayMemberBinding="{Binding Valor}"/>
+                            <GridViewColumn 
+                                Width="200" 
+                                Header="Data"
+                                DisplayMemberBinding="{Binding DtPagamento}"/>
+                            <GridViewColumn 
+                                Width="50" 
+                                Header="Pago"
+                                DisplayMemberBinding="{Binding PagoExtenso}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Separator Height="10"></Separator>
+                <Label x:Name="lblTotalizador" Content="#" Width="700" VerticalAlignment="Bottom"></Label>
+                <ListView x:Name="lstDespesas_Copy" Height="200" SelectionChanged="lstDespesas_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn 
+                                Width="200" 
+                                Header="Fornecedor"
+                                DisplayMemberBinding="{Binding Fornecedor}"/>
+                            <GridViewColumn 
+                                Width="200" 
+                                Header="Descrição"
+                                DisplayMemberBinding="{Binding Descricao}"/>
+                            <GridViewColumn 
+                                Width="100" 
+                                Header="Valor"
+                                DisplayMemberBinding="{Binding Valor}"/>
+                            <GridViewColumn 
+                                Width="50" 
+                                Header="Data"
+                                DisplayMemberBinding="{Binding DtPagamento}"/>
+                            <GridViewColumn 
+                                Width="50" 
+                                Header="Pago"
+                                DisplayMemberBinding="{Binding PagoExtenso}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
